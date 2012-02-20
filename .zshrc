@@ -1,57 +1,36 @@
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
 
-# Set the key mapping style to 'emacs' or 'vi'.
-zstyle ':omz:editor' keymap 'vi'
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="bira"
 
-# Auto convert .... to ../..
-zstyle ':omz:editor' dot-expansion 'no'
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Set case-sensitivity for completion, history lookup, etc.
-zstyle ':omz:*:*' case-sensitive 'no'
+# Set to this to use case-sensitive completion
+# CASE_SENSITIVE="true"
 
-# Color output (auto set to 'no' on dumb terminals).
-zstyle ':omz:*:*' color 'yes'
+# Comment this out to disable weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
 
-# Auto set the tab and window titles.
-zstyle ':omz:terminal' auto-title 'yes'
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
 
-# Set the plugins to load (see $OMZ/plugins/).
-zstyle ':omz:load' plugin 'archive' 'git'
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
-# Set the prompt theme to load.
-# Setting it to 'random' loads a random theme.
-# Auto set to 'off' on dumb terminals.
-zstyle ':omz:prompt' theme 'sorin'
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
 
-# This will make you shout: OH MY ZSHELL!
-source "$HOME/.oh-my-zsh/init.zsh"
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git)
 
-export DOT_HOME=$HOME/.home
-export PATH=$PATH:$DOT_HOME/bin
+source $ZSH/oh-my-zsh.sh
 
-if [ -d "$HOME/bin" ]; then
-	export PATH=$PATH:$HOME/bin
-fi
-
-# aliases
-source $DOT_HOME/.aliases
-
-# load custom theme
-source $DOT_HOME/themes/domnikl.zsh-theme
-
-# set environment variables ...
-source $DOT_HOME/.environment_variables
-
-# fortune cookie ;-)
-source $DOT_HOME/.fortune
-
-source $DOT_HOME/.macports
-
-# add a local .local.zshrc file, if it exists
-if [ -f "$HOME/.local.zshrc" ]; then
-	source $HOME/.local.zshrc
-fi
-
-export EDITOR=`which vim`
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-source $HOME/.rvm/scripts/rvm
+# Customize to your needs...
