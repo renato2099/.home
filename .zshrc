@@ -34,3 +34,8 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+alias -s cc=vim
+alias -s c=vim
+alias -s cpp=vim
+alias -s h=vim
+alias -s hpp=vim
