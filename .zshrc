@@ -39,3 +39,15 @@ alias -s c=vim
 alias -s cpp=vim
 alias -s h=vim
 alias -s hpp=vim
+
+if [[ $HOST == bach* ]]
+then
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/local/mpilman/software/lib:/local/mpilman/software/lib64
+    export PATH=/local/mpilman/software/bin:$PATH
+    export C_INCLUDE_PATH=$C_INCLUDE_PATH:/local/mpilman/software/include
+    export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/local/mpilman/software/include
+    export LIBRARY_PATH=/local/mpilman/software/lib:/local/mpilman/software/lib64
+    
+    export http_proxy='http://proxy.ethz.ch:3128'
+    export https_proxy='http://proxy.ethz.ch:3128'
+fi
