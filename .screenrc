@@ -21,8 +21,6 @@ sessionname $HOST
 
 # screens
 screen -t SHELL 0 zsh
-screen -t SHELL 1 zsh
-screen -t SHELL 2 zsh
 
 select 0
 
