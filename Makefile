@@ -46,7 +46,11 @@ $(HOME)/.screenrc:
 	ln -s $(DEST_PATH)/.screenrc $(HOME)/.screenrc
 $(HOME)/sshblack:
 	ln -s $(DEST_PATH)/bin/sshblack $(HOME)/sshblack
-	
+
+$(HOME)/.vimrc:
+	ln -s $(DEST_PATH)/.vimrc $(HOME)/.vimrc
+$(HOME)/.vim:
+	ln -s $(DEST_PATH)/.vim $(HOME)/.vim
 	
 
 # local settings file
