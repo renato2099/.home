@@ -7,7 +7,7 @@ DEST_PATH = $(HOME)/.home
 DOT_FILES = $(HOME)/.zshrc $(HOME)/.gemrc $(HOME)/.screenrc $(HOME)/sshblack
 
 # oh-my-zsh Repository to be used
-OH_MY_REPO = https://github.com/sorin-ionescu/oh-my-zsh.git
+OH_MY_REPO = https://github.com/robbyrussell/oh-my-zsh.git
 
 # local .zshrc (gets inserted into .zshrc for local specialities)
 LOCAL_SETTINGS_FILE = $(HOME)/.local.zshrc
@@ -46,7 +46,11 @@ $(HOME)/.screenrc:
 	ln -s $(DEST_PATH)/.screenrc $(HOME)/.screenrc
 $(HOME)/sshblack:
 	ln -s $(DEST_PATH)/bin/sshblack $(HOME)/sshblack
-	
+
+$(HOME)/.vimrc:
+	ln -s $(DEST_PATH)/.vimrc $(HOME)/.vimrc
+$(HOME)/.vim:
+	ln -s $(DEST_PATH)/.vim $(HOME)/.vim
 	
 
 # local settings file
