@@ -14,7 +14,7 @@ LOCAL_SETTINGS_FILE = $(HOME)/.local.zshrc
 
 ZSH_PATH = `which zsh`
 
-install: $(HOME)/.oh-my-zsh clean $(DOT_FILES) $(LOCAL_SETTINGS_FILE) help
+install: $(HOME)/.oh-my-zsh clean $(DOT_FILES) $(LOCAL_SETTINGS_FILE) help ${HOME}/.vimrc ${HOME}/.vim
 	
 clean:
 	rm -f $(DOT_FILES)
