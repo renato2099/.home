@@ -40,6 +40,8 @@ alias -s cpp=vim
 alias -s h=vim
 alias -s hpp=vim
 
+export PATH=/opt/local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/sbin:~/.cabal/bin:$PATH
+
 if [[ $HOST == bach* ]]
 then
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/local/mpilman/software/lib:/local/mpilman/software/lib64
