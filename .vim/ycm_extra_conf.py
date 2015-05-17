@@ -162,6 +162,10 @@ def DefaultIncludes( filename, flags ):
     f.close()
 
 def FlagsForFile( filename, **kwargs ):
+    if filename.endswith('.h'):
+        filename = filename[:filename.rfind('.')] + 'c'
+    if filename.endswith(".hpp"):
+        filename = filename[:filename.rfind('.')] + '.cpp'
     cwd = ""
     try:
         cwd = str(kwargs['client_data']['getcwd()'])
