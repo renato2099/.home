@@ -14,7 +14,7 @@ LOCAL_SETTINGS_FILE = $(HOME)/.local.zshrc
 
 ZSH_PATH = `which zsh`
 
-install: $(HOME)/.oh-my-zsh clean $(DOT_FILES) $(LOCAL_SETTINGS_FILE) help ${HOME}/.vimrc ${HOME}/.vim
+install: $(HOME)/.oh-my-zsh clean $(DOT_FILES) $(LOCAL_SETTINGS_FILE) help ${HOME}/.vimrc ${HOME}/.vim fish
 	
 clean:
 	rm -f $(DOT_FILES)
@@ -29,13 +29,21 @@ sshblack:
 	# run it the first time to register cron job
 	sudo $(HOME)/sshblack/sshblack.pl
 
+fish: ${HOME}/.config/fish/config.fish ${HOME}/.config/fish/functions
+
+${HOME}/.config/fish/config.fish:
+	mkdir -p ${HOME}/.config/fish
+	ln -s ${DEST_PATH}/config.fish ${HOME}/.config/fish/config.fish
+
+${HOME}/.config/fish/functions:
+	ln -s ${DEST_PATH}/functions ${HOME}/.config/fish/functions
+
 # target to clone oh-my-zsh repository
 $(HOME)/.oh-my-zsh:
 	git clone $(OH_MY_REPO) $(HOME)/.oh-my-zsh
 	cd $(HOME)/.oh-my-zsh
 	git submodule update --init --recursive
-	
-	
+
 # sym links
 $(HOME)/.zshrc:
 	ln -s $(DEST_PATH)/.zshrc $(HOME)/.zshrc

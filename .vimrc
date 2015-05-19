@@ -1,5 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set shell=bash
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -22,6 +23,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'lukerandall/haskellmode-vim'
 Plugin 'tfnico/vim-gradle'
 Plugin 'nanotech/jellybeans.vim'
+Plugin 'dag/vim-fish'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
