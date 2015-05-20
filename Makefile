@@ -29,7 +29,7 @@ sshblack:
 	# run it the first time to register cron job
 	sudo $(HOME)/sshblack/sshblack.pl
 
-fish: ${HOME}/.config/fish/config.fish ${HOME}/.config/fish/functions
+fish: ${HOME}/.config/fish/config.fish ${HOME}/.config/fish/functions ${HOME}/.config/fish/completions
 
 ${HOME}/.config/fish/config.fish:
 	mkdir -p ${HOME}/.config/fish
@@ -37,6 +37,9 @@ ${HOME}/.config/fish/config.fish:
 
 ${HOME}/.config/fish/functions:
 	ln -s ${DEST_PATH}/functions ${HOME}/.config/fish/functions
+
+${HOME}/.config/fish/completions:
+	ln -s ${DEST_PATH}/completions ${HOME}/.config/fish/completions
 
 # target to clone oh-my-zsh repository
 $(HOME)/.oh-my-zsh:
