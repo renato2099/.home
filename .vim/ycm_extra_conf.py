@@ -97,15 +97,33 @@ def ParseCMakeDependFile(cwd, dependfile, filename):
         for df in dependfiles[objfile]:
             yield df
 
+def FindBuildDir(cwd):
+    cmakefiles = os.path.join(cwd, 'CMakeFiles')
+    if os.path.exists(cmakefiles):
+        return cwd
+    cmakefiles = os.path.join(cwd, 'build/CMakeFiles')
+    if os.path.exists(cmakefiles):
+        return os.path.join(cwd, 'build')
+    c = cwd
+    if c[-1] == '/':
+        c = c[0:-1]
+    sp = os.path.split(c)
+    builddir = os.path.join(sp[0], 'builddirs/' + sp[1])
+    if os.path.exists(os.path.join(builddir, 'CMakeFiles')):
+        return builddir
+    return None
 
 def CMakeDependFilePath(cwd):
-    cmakefiles = os.path.join(cwd, 'CMakeFiles')
+    cmakefiles = FindBuildDir(cwd)
+    sys.stderr.write("CMakeDependFilePath with cmakefiles = " + cmakefiles + "\n")
     if os.path.isdir(cmakefiles):
-        for subdir, dirs, files in os.walk(cmakefiles):
+        sys.stderr.write("isdir = true\n")
+        for dirpath, dirs, files in os.walk(cmakefiles):
+            sys.stderr.write("isdir = true\n")
             for d in dirs:
                 ext = os.path.splitext(d)[1]
                 if ext == '.dir':
-                    dependfile = os.path.join(cmakefiles, d, 'depend.make')
+                    dependfile = os.path.join(dirpath, d, 'depend.make')
                     if os.path.isfile(dependfile):
                         yield dependfile
 
@@ -131,7 +149,8 @@ def GuessCompilationInfoForHeader(cwd, database, filename):
 
 
 def GetCompilationInfoForFile(cwd, filename):
-    database = ycm_core.CompilationDatabase(cwd)
+    builddir = FindBuildDir(cwd)
+    database = ycm_core.CompilationDatabase(builddir)
     final_flags = []
     if database:
         if IsHeaderFile(filename):
@@ -215,7 +234,6 @@ def DefaultIncludes(filename, flags):
 
 
 def FlagsForFile(filename, **kwargs):
-    sys.stderr.write("Hello World!!\n")
     cwd = ""
     try:
         cwd = str(kwargs['client_data']['getcwd()'])
