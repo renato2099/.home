@@ -40,8 +40,10 @@ set number
 set cinoptions=:0,g0,t0,N-s
 set scrolloff=15
 set nostartofline
-colorscheme jellybeans
 let mapleader = ","
+" For tmux
+set t_ut=
+colorscheme jellybeans
 
 " Font
 set guifont=Droid\ Sans\ Mono\ for\ Powerline:h11

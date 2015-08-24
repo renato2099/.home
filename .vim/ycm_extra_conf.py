@@ -40,6 +40,13 @@ C_HEADER_EXTENSIONS = [ '.h' ]
 CXX_HEADER_EXTENSIONS = [ '.hxx', '.hpp' ]
 HEADER_EXTENSIONS = C_HEADER_EXTENSIONS + CXX_HEADER_EXTENSIONS
 
+class DebugError(Exception):
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return self.value
+
 
 def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):
     if not working_directory:
@@ -161,11 +168,19 @@ def DefaultIncludes( filename, flags ):
 
     f.close()
 
+def HasCompFile( filename ):
+    fline = ''
+    with open( filename, 'r' ) as f:
+        fline = f.readline().strip()
+    fline.strip()
+    s = '// !b = '
+    if fline.startswith( s ):
+        rel = fline[len( s ):]
+        currdir = os.path.dirname( filename )
+        return os.path.join( currdir, rel )
+    return None
+
 def FlagsForFile( filename, **kwargs ):
-    if filename.endswith('.h'):
-        filename = filename[:filename.rfind('.')] + 'c'
-    if filename.endswith(".hpp"):
-        filename = filename[:filename.rfind('.')] + '.cpp'
     cwd = ""
     try:
         cwd = str(kwargs['client_data']['getcwd()'])
@@ -184,6 +199,35 @@ def FlagsForFile( filename, **kwargs ):
             final_flags = MakeRelativePathsInFlagsAbsolute(
               compilation_info.compiler_flags_,
               compilation_info.compiler_working_dir_ )
+
+
+        if IsHeaderFile( filename ):
+            compFile = HasCompFile( filename )
+            if compFile is not None:
+                # we might run into a stack overflow here if the user defines cycles
+                return FlagsForFile( compFile )
+            basename = os.path.splitext( filename )[ 0 ]
+            dirname = os.path.dirname( filename )
+            fname = os.path.basename( filename )
+            fname = os.path.splitext( fname )[0]
+            for extension in SOURCE_EXTENSIONS:
+                replacement_file = basename + extension
+                if os.path.exists( replacement_file ):
+                    compilation_info = database.GetCompilationInfoForFile( replacement_file )
+                    if compilation_info.compiler_flags_:
+                        return compilation_info
+                else:
+                    replacement_file = dirname + '/' + fname + extension
+                    if os.path.exists( replacement_file ):
+                        compilation_info = database.GetCompilationInfoForFile(
+                              replacement_file )
+                        if compilation_info.compiler_flags_:
+                            return compilation_info
+                    replacement_file = dirname + "/src/" + fname + extension
+                    if os.path.exists(replacement_file):
+                        compilation_info = database.GetCompilationInfoForFile(replacement_file)
+                        if compilation_info.compiler_flags_:
+                            return compilation_info
 
         if os.path.isfile( cwd + "/Kbuild" ):
             KernelFlags(src_file, final_flags)
