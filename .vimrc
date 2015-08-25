@@ -45,6 +45,11 @@ let mapleader = ","
 set t_ut=
 colorscheme jellybeans
 
+" No swap files in working directories
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+
 " Font
 set guifont=Droid\ Sans\ Mono\ for\ Powerline:h11
 
