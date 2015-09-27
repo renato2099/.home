@@ -19,10 +19,11 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'joonty/vdebug.git'
 Plugin 'tpope/vim-fugitive'
-Plugin 'lukerandall/haskellmode-vim'
 Plugin 'tfnico/vim-gradle'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'dag/vim-fish'
+Plugin 'eagletmt/neco-ghc.git'
+Plugin 'hail2u/vim-css3-syntax'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -42,6 +43,13 @@ set scrolloff=15
 set nostartofline
 colorscheme jellybeans
 let mapleader = ","
+
+" Add header to new files
+autocmd BufNewFile *.cpp so ~/.home/header.txt
+autocmd BufNewFile *.c so ~/.home/header.txt
+autocmd BufNewFile *.h so ~/.home/header.txt
+autocmd BufNewFile *.hpp so ~/.home/header.txt
+autocmd BufNewFile *.java so ~/.home/header.txt
 
 " Font
 set guifont=Droid\ Sans\ Mono\ for\ Powerline:h11
@@ -93,10 +101,6 @@ nnoremap <DOWN> <NOP>
 nnoremap <LEFT> <NOP>
 nnoremap <RIGHT> <NOP>
 
-" Haskell
-autocmd BufEnter *.hs compiler ghc
-let g:haddock_browser="/Applications/Firefox.app/Contents/MacOS/firefox"
-
 " Python special case
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 filetype plugin on
@@ -120,12 +124,15 @@ let g:ctrlp_working_path_mode = 'r'
 " Airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+" Neco-ghc
+setlocal omnifunc=necoghc#omnifunc
 " YCM
 nnoremap <leader>g :YcmCompleter GoTo<CR>
 nnoremap <leader>D :YcmDiag<CR>
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_extra_conf_vim_data = ['getcwd()']
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
 " Semantic Highlight
 nnoremap <leader>s :SemanticHighlight<CR>
 " Clighter

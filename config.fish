@@ -10,3 +10,5 @@ set -x LC_NUMERIC "en_US.UTF-8"
 set -x LC_TIME "en_US.UTF-8"
 set -x TERM xterm-256color
 
+set -x PATH $HOME/.local/bin $PATH
+

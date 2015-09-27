@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/Users/mpilman/.vim/bundle/vim-lldb'
 let g:netrw_dirhist_2='/Users/mpilman/.vim/bundle/vim-lldb/plugin'
 let g:netrw_dirhist_3='/Users/mpilman/.vim/bundle/vim-lldb'
@@ -8,3 +8,4 @@ let g:netrw_dirhist_5='/Users/mpilman/eth/tellstore/util'
 let g:netrw_dirhist_6='/Users/mpilman/eth/tellstore'
 let g:netrw_dirhist_7='/Users/mpilman/eth/tellstore/tests'
 let g:netrw_dirhist_8='/Users/mpilman/eth/tellstore/deltamain'
+let g:netrw_dirhist_9='/Users/mpilman/Projects/mariage/_posts'
