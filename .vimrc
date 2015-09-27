@@ -41,8 +41,15 @@ set number
 set cinoptions=:0,g0,t0,N-s
 set scrolloff=15
 set nostartofline
-colorscheme jellybeans
 let mapleader = ","
+" For tmux
+set t_ut=
+colorscheme jellybeans
+
+" No swap files in working directories
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
 
 " Add header to new files
 autocmd BufNewFile *.cpp so ~/.home/header.txt
