@@ -32,6 +32,7 @@ set nocompatible
 set expandtab
 set shiftwidth=4
 set softtabstop=4
+set backspace=2
 set smartindent
 set smarttab
 set mouse=a
