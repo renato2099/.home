@@ -24,6 +24,7 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'dag/vim-fish'
 Plugin 'eagletmt/neco-ghc.git'
 Plugin 'hail2u/vim-css3-syntax'
+Plugin 'jez/vim-superman'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -46,6 +47,12 @@ let mapleader = ","
 " For tmux
 set t_ut=
 colorscheme jellybeans
+
+" Man
+runtime ftplugin/man.vim
+nnoremap K :Man <cword>
+" eclim
+let g:EclimCompletionMethod = 'omnifunc'
 
 " No swap files in working directories
 set backupdir=~/.vim/backup//
@@ -74,8 +81,8 @@ endfunction
 nnoremap <leader>g :buffers<CR>:buffer<Space>
 nnoremap <leader>l :ls<CR>
 nnoremap <leader>d :call DelCurrBuffer()<CR>
-nnoremap <silent> <tab> :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
-nnoremap <silent> <s-tab> :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
+nnoremap <silent> <tab> :bnext<CR>
+nnoremap <silent> <s-tab> :bprevious<CR>
 
 " Navigate easier through split windows
 nnoremap <C-h> <C-w>h
@@ -129,6 +136,8 @@ endif
 
 " CTRL-P
 let g:ctrlp_working_path_mode = 'r'
+nnoremap <leader>v :CtrlPMRUFiles<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
 " Airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
