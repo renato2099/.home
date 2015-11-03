@@ -14,7 +14,7 @@ LOCAL_SETTINGS_FILE = $(HOME)/.local.zshrc
 
 ZSH_PATH = `which zsh`
 
-install: $(HOME)/.oh-my-zsh clean $(DOT_FILES) $(LOCAL_SETTINGS_FILE) help ${HOME}/.vimrc ${HOME}/.vim fish
+install: $(HOME)/.oh-my-zsh clean $(DOT_FILES) $(LOCAL_SETTINGS_FILE) help ${HOME}/.vimrc ${HOME}/.vim fish ${HOME}/.clang-format
 	
 clean:
 	rm -f $(DOT_FILES)
@@ -40,6 +40,9 @@ ${HOME}/.config/fish/functions:
 
 ${HOME}/.config/fish/completions:
 	ln -s ${DEST_PATH}/completions ${HOME}/.config/fish/completions
+
+${HOME}/.clang-format:
+	ln -s ${DEST_PATH}/clang-format ${HOME}/.clang-format
 
 # target to clone oh-my-zsh repository
 $(HOME)/.oh-my-zsh:

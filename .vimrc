@@ -25,6 +25,8 @@ Plugin 'dag/vim-fish'
 Plugin 'eagletmt/neco-ghc.git'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'jez/vim-superman'
+Plugin 'kana/vim-operator-user'
+Plugin 'rhysd/vim-clang-format'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -50,7 +52,7 @@ colorscheme jellybeans
 
 " Man
 runtime ftplugin/man.vim
-nnoremap K :Man <cword>
+nnoremap K :Man <cword><CR>
 " eclim
 let g:EclimCompletionMethod = 'omnifunc'
 
@@ -146,7 +148,13 @@ setlocal omnifunc=necoghc#omnifunc
 " YCM
 nnoremap <leader>g :YcmCompleter GoTo<CR>
 nnoremap <leader>D :YcmDiag<CR>
-let g:ycm_autoclose_preview_window_after_completion = 1
+nnoremap <leader>F :YcmCompleter FixIt<CR>
+" let g:ycm_autoclose_preview_window_after_completion = 1
+augroup CloseAutocompletePreview
+    autocmd InsertLeave *.hpp :pclose
+    autocmd InsertLeave *.h :pclose
+    autocmd InsertLeave *.cpp :pclose
+augroup END
 let g:ycm_extra_conf_vim_data = ['getcwd()']
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 let g:ycm_semantic_triggers = {'haskell' : ['.']}

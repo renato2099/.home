@@ -150,6 +150,7 @@ def GuessCompilationInfoForHeader(cwd, database, filename):
 
 def GetCompilationInfoForFile(cwd, filename):
     builddir = FindBuildDir(cwd)
+    sys.stderr.write("builddir" + builddir + "\n")
     database = ycm_core.CompilationDatabase(builddir)
     final_flags = []
     if database:
