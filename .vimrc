@@ -27,6 +27,7 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'jez/vim-superman'
 Plugin 'kana/vim-operator-user'
 Plugin 'rhysd/vim-clang-format'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -46,6 +47,7 @@ set cinoptions=:0,g0,t0,N-s
 set scrolloff=15
 set nostartofline
 let mapleader = ","
+let maplocalleader = "\\"
 " For tmux
 set t_ut=
 colorscheme jellybeans
@@ -53,6 +55,7 @@ colorscheme jellybeans
 " Man
 runtime ftplugin/man.vim
 nnoremap K :Man <cword><CR>
+set textwidth=80
 " eclim
 let g:EclimCompletionMethod = 'omnifunc'
 
@@ -60,6 +63,11 @@ let g:EclimCompletionMethod = 'omnifunc'
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
+
+" Latex-Box
+let g:LatexBox_latexmk_async = 1
+map <silent> <localleader>ls :silent !/Applications/Skim.app/Contents/SharedSupport/displayline
+    \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>" "%:p" <CR>
 
 " Add header to new files
 autocmd BufNewFile *.cpp so ~/.home/header.txt
@@ -81,7 +89,6 @@ function! DelCurrBuffer()
     execute 'bdelete' bufNr 
 endfunction
 nnoremap <leader>g :buffers<CR>:buffer<Space>
-nnoremap <leader>l :ls<CR>
 nnoremap <leader>d :call DelCurrBuffer()<CR>
 nnoremap <silent> <tab> :bnext<CR>
 nnoremap <silent> <s-tab> :bprevious<CR>
@@ -113,6 +120,8 @@ inoremap <C-k> <up>
 inoremap <C-l> <right>
 nnoremap L $
 nnoremap H ^
+vnoremap L $
+vnoremap H ^
 nnoremap <UP> <NOP>
 nnoremap <DOWN> <NOP>
 nnoremap <LEFT> <NOP>
