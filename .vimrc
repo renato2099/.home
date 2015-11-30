@@ -66,8 +66,10 @@ set undodir=~/.vim/undo//
 
 " Latex-Box
 let g:LatexBox_latexmk_async = 1
+let g:LatexBox_viewer = "open -a Skim"
 map <silent> <localleader>ls :silent !/Applications/Skim.app/Contents/SharedSupport/displayline
     \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>" "%:p" <CR>
+autocmd  FileType tex setlocal spell spelllang=en_us
 
 " Add header to new files
 autocmd BufNewFile *.cpp so ~/.home/header.txt
@@ -77,7 +79,7 @@ autocmd BufNewFile *.hpp so ~/.home/header.txt
 autocmd BufNewFile *.java so ~/.home/header.txt
 
 " Font
-set guifont=Droid\ Sans\ Mono\ for\ Powerline:h11
+set guifont=Meslo\ LG\ M\ for\ Powerline:h12
 
 " status line
 set laststatus=2
@@ -126,6 +128,10 @@ nnoremap <UP> <NOP>
 nnoremap <DOWN> <NOP>
 nnoremap <LEFT> <NOP>
 nnoremap <RIGHT> <NOP>
+
+" Haskell
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " Python special case
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
