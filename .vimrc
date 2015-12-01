@@ -55,7 +55,6 @@ colorscheme jellybeans
 " Man
 runtime ftplugin/man.vim
 nnoremap K :Man <cword><CR>
-set textwidth=80
 " eclim
 let g:EclimCompletionMethod = 'omnifunc'
 
@@ -70,6 +69,7 @@ let g:LatexBox_viewer = "open -a Skim"
 map <silent> <localleader>ls :silent !/Applications/Skim.app/Contents/SharedSupport/displayline
     \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>" "%:p" <CR>
 autocmd  FileType tex setlocal spell spelllang=en_us
+autocmd FileType tex set textwidth=80
 
 " Add header to new files
 autocmd BufNewFile *.cpp so ~/.home/header.txt
