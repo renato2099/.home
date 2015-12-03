@@ -4,7 +4,7 @@
 DEST_PATH = $(HOME)/.home
 
 # files to delete from $HOME
-DOT_FILES = $(HOME)/.zshrc $(HOME)/.gemrc $(HOME)/.screenrc $(HOME)/sshblack
+DOT_FILES = $(HOME)/.zshrc $(HOME)/.gemrc $(HOME)/.screenrc $(HOME)/sshblack $(HOME)/.latexmkrc $(HOME)/.vimrc $(HOME)/.vim fish $(HOME)/.clang-format $(HOME)/.tmux.conf
 
 # oh-my-zsh Repository to be used
 OH_MY_REPO = https://github.com/robbyrussell/oh-my-zsh.git
@@ -14,7 +14,7 @@ LOCAL_SETTINGS_FILE = $(HOME)/.local.zshrc
 
 ZSH_PATH = `which zsh`
 
-install: $(HOME)/.oh-my-zsh clean $(DOT_FILES) $(LOCAL_SETTINGS_FILE) help ${HOME}/.vimrc ${HOME}/.vim fish ${HOME}/.clang-format ${HOME}/.tmux.conf
+install: $(HOME)/.oh-my-zsh clean $(DOT_FILES) $(LOCAL_SETTINGS_FILE) help
 	
 clean:
 	rm -f $(DOT_FILES)
@@ -29,23 +29,24 @@ sshblack:
 	# run it the first time to register cron job
 	sudo $(HOME)/sshblack/sshblack.pl
 
-fish: ${HOME}/.config/fish/config.fish ${HOME}/.config/fish/functions ${HOME}/.config/fish/completions
+fish: $(HOME)/.config/fish/config.fish $(HOME)/.config/fish/functions $(HOME)/.config/fish/completions
 
-${HOME}/.config/fish/config.fish:
-	mkdir -p ${HOME}/.config/fish
-	ln -s ${DEST_PATH}/config.fish ${HOME}/.config/fish/config.fish
+$(HOME)/.config/fish/config.fish:
+	mkdir -p $(HOME)/.config/fish
+	ln -s $(DEST_PATH)/config.fish $(HOME)/.config/fish/config.fish
 
-${HOME}/.config/fish/functions:
-	ln -s ${DEST_PATH}/functions ${HOME}/.config/fish/functions
+$(HOME)/.config/fish/functions:
+	ln -s $(DEST_PATH)/functions $(HOME)/.config/fish/functions
 
-${HOME}/.config/fish/completions:
-	ln -s ${DEST_PATH}/completions ${HOME}/.config/fish/completions
+$(HOME)/.config/fish/completions:
+	ln -s $(DEST_PATH)/completions $(HOME)/.config/fish/completions
 
-${HOME}/.clang-format:
-	ln -s ${DEST_PATH}/clang-format ${HOME}/.clang-format
+$(HOME)/.clang-format:
+	ln -s $(DEST_PATH)/clang-format $(HOME)/.clang-format
 
-${HOME}/.tmux.conf:
-	ln -s ${DEST_PATH}/tmux.conf ${HOME}/.tmux.conf
+$(HOME)/.tmux.conf:
+	ln -s $(DEST_PATH)/tmux.conf $(HOME)/.tmux.conf
+
 
 # target to clone oh-my-zsh repository
 $(HOME)/.oh-my-zsh:
@@ -53,9 +54,13 @@ $(HOME)/.oh-my-zsh:
 	cd $(HOME)/.oh-my-zsh
 	git submodule update --init --recursive
 
+
 # sym links
 $(HOME)/.zshrc:
 	ln -s $(DEST_PATH)/.zshrc $(HOME)/.zshrc
+
+$(HOME)/.latexmkrc:
+	ln -s $(DEST_PATH)/latexmkrc $(HOME)/.latexmkrc
 
 $(HOME)/.gemrc:
 	ln -s $(DEST_PATH)/.gemrc $(HOME)/.gemrc
