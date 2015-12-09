@@ -203,8 +203,10 @@ augroup END
 let g:ycm_extra_conf_vim_data = ['getcwd()']
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
 let g:ycm_semantic_triggers = {'haskell' : ['.']}
+"
 " Semantic Highlight
 nnoremap <leader>s :SemanticHighlight<CR>
+
 " Clighter
 let g:clighter_libclang_file = '/Applications/Xcode.app//Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
 let g:clighter_highlight_groups = ["clighterMacroInstantiation","clighterTypeRef","clighterStructDecl","clighterClassDecl","clighterEnumDecl","clighterEnumConstantDecl","clighterDeclRefExprEnum","clighterCursorDefRef","clighterFunctionDecl","clighterDeclRefExprCall","clighterMemberRefExpr","clighterNamespace"]
