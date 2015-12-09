@@ -66,6 +66,7 @@ set undodir=~/.vim/undo//
 " Latex-Box
 let g:LatexBox_latexmk_async = 1
 let g:LatexBox_viewer = "open -a Skim"
+let g:Tex_ViewRule_pdf = 'Skim'
 map <silent> <localleader>ls :silent !/Applications/Skim.app/Contents/SharedSupport/displayline
     \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>" "%:p" <CR>
 autocmd  FileType tex setlocal spell spelllang=en_us
