@@ -28,11 +28,16 @@ Plugin 'jez/vim-superman'
 Plugin 'kana/vim-operator-user'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'tpope/vim-surround'
+Plugin 'junegunn/vim-easy-align'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+set encoding=utf-8
+set relativenumber
 set nocompatible
+set visualbell
 set expandtab
 set shiftwidth=4
 set softtabstop=4
@@ -40,7 +45,7 @@ set backspace=2
 set smartindent
 set smarttab
 set mouse=a
-set background=dark
+set background=light
 set hidden
 set number
 set cinoptions=:0,g0,t0,N-s
@@ -48,6 +53,8 @@ set scrolloff=15
 set nostartofline
 let mapleader = ","
 let maplocalleader = "\\"
+set list
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 " For tmux
 set t_ut=
 colorscheme jellybeans
@@ -62,6 +69,18 @@ let g:EclimCompletionMethod = 'omnifunc'
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
+set noswapfile
+
+" Searching
+set showmatch
+set hlsearch
+nnoremap <leader><space> :noh<cr>:call clearmatches()<cr>
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
+
+" Resizing
+autocmd VimResized * exe "normal! \<c-w>="
 
 " Latex-Box
 let g:LatexBox_latexmk_async = 1
@@ -78,6 +97,18 @@ autocmd BufNewFile *.c so ~/.home/header.txt
 autocmd BufNewFile *.h so ~/.home/header.txt
 autocmd BufNewFile *.hpp so ~/.home/header.txt
 autocmd BufNewFile *.java so ~/.home/header.txt
+
+" Automatically close brackets
+inoremap ( ()<left>
+inoremap { {}<left>
+inoremap [ []<left>
+inoremap (<cr> (<cr>)<esc>O
+inoremap {<cr> {<cr>}<esc>O
+inoremap [<cr> [<cr>]<esc>O
+
+augroup TeXClose
+    autocmd FileType tex inoremap " ``''<left><left>
+augroup END
 
 " Font
 set guifont=Meslo\ LG\ M\ for\ Powerline:h12
@@ -129,6 +160,7 @@ nnoremap <UP> <NOP>
 nnoremap <DOWN> <NOP>
 nnoremap <LEFT> <NOP>
 nnoremap <RIGHT> <NOP>
+nnoremap D d$
 
 " Haskell
 let g:haskellmode_completion_ghc = 0
@@ -144,8 +176,6 @@ set shellslash
 set grepprg=grep\ -nH\ $*
 
 nnoremap ,cd :cd %:p:h<CR>
-
-set enc=utf-8
 
 " vim Alternative
 if filereadable(".vim/a.vim")
