@@ -51,13 +51,14 @@ set number
 set cinoptions=:0,g0,t0,N-s
 set scrolloff=15
 set nostartofline
-let mapleader = ","
-let maplocalleader = "\\"
 set list
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 " For tmux
 set t_ut=
 colorscheme jellybeans
+
+let mapleader = ","
+let maplocalleader = "\\"
 
 " Man
 runtime ftplugin/man.vim
@@ -105,6 +106,9 @@ inoremap [ []<left>
 inoremap (<cr> (<cr>)<esc>O
 inoremap {<cr> {<cr>}<esc>O
 inoremap [<cr> [<cr>]<esc>O
+inoremap {<space> {<space> <space>}<left><left>
+inoremap (<space> (<space> <space>)<left><left>
+inoremap [<space> [<space> <space>]<left><left>
 
 augroup TeXClose
     autocmd FileType tex inoremap " ``''<left><left>
