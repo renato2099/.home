@@ -105,6 +105,9 @@ autocmd BufNewFile *.java so ~/.home/header.txt
 inoremap ( ()<left>
 inoremap { {}<left>
 inoremap [ []<left>
+inoremap () ()
+inoremap {} {}
+inoremap [] []
 inoremap (<cr> (<cr>)<esc>O
 inoremap {<cr> {<cr>}<esc>O
 inoremap [<cr> [<cr>]<esc>O
