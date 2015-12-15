@@ -53,13 +53,14 @@ set number
 set cinoptions=:0,g0,t0,N-s
 set scrolloff=15
 set nostartofline
-let mapleader = ","
-let maplocalleader = "\\"
 set list
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 " For tmux
 set t_ut=
 colorscheme jellybeans
+
+let mapleader = ","
+let maplocalleader = "\\"
 
 " Man
 runtime ftplugin/man.vim
@@ -87,6 +88,7 @@ autocmd VimResized * exe "normal! \<c-w>="
 " Latex-Box
 let g:LatexBox_latexmk_async = 1
 let g:LatexBox_viewer = "open -a Skim"
+let g:Tex_ViewRule_pdf = 'Skim'
 map <silent> <localleader>ls :silent !/Applications/Skim.app/Contents/SharedSupport/displayline
     \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>" "%:p" <CR>
 autocmd FileType tex setlocal spell spelllang=en_us
@@ -106,9 +108,9 @@ inoremap [ []<left>
 inoremap (<cr> (<cr>)<esc>O
 inoremap {<cr> {<cr>}<esc>O
 inoremap [<cr> [<cr>]<esc>O
-inoremap () ()
-inoremap [] []
-inoremap {} {}
+inoremap {<space> {<space> <space>}<left><left>
+inoremap (<space> (<space> <space>)<left><left>
+inoremap [<space> [<space> <space>]<left><left>
 
 augroup TeXClose
     autocmd FileType tex inoremap " ``''<left><left>
