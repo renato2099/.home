@@ -13,6 +13,11 @@ set -x TERM xterm-256color
 set -x MANPAGER most
 
 set -x PATH $HOME/.local/bin $PATH
+if test -d $HOME/.cargo/
+    set -x PATH $HOME/.cargo/bin $PATH
+end
+
+set RUST_SRC_PATH $HOME/Projects/rust/src
 
 function vman
     vim -c "SuperMan $argv"

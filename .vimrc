@@ -30,6 +30,8 @@ Plugin 'rhysd/vim-clang-format'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'tpope/vim-surround'
 Plugin 'junegunn/vim-easy-align'
+Plugin 'rust-lang/rust.vim'
+Plugin 'racer-rust/vim-racer'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -87,7 +89,7 @@ let g:LatexBox_latexmk_async = 1
 let g:LatexBox_viewer = "open -a Skim"
 map <silent> <localleader>ls :silent !/Applications/Skim.app/Contents/SharedSupport/displayline
     \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>" "%:p" <CR>
-autocmd  FileType tex setlocal spell spelllang=en_us
+autocmd FileType tex setlocal spell spelllang=en_us
 autocmd FileType tex set textwidth=80
 
 " Add header to new files
@@ -104,6 +106,9 @@ inoremap [ []<left>
 inoremap (<cr> (<cr>)<esc>O
 inoremap {<cr> {<cr>}<esc>O
 inoremap [<cr> [<cr>]<esc>O
+inoremap () ()
+inoremap [] []
+inoremap {} {}
 
 augroup TeXClose
     autocmd FileType tex inoremap " ``''<left><left>
@@ -111,6 +116,9 @@ augroup END
 
 " Font
 set guifont=Meslo\ LG\ M\ for\ Powerline:h12
+
+" Rust
+let $RUST_SRC_PATH="/Users/mpilman/Projects/rust/src/"
 
 " status line
 set laststatus=2
@@ -196,9 +204,9 @@ nnoremap <leader>D :YcmDiag<CR>
 nnoremap <leader>F :YcmCompleter FixIt<CR>
 " let g:ycm_autoclose_preview_window_after_completion = 1
 augroup CloseAutocompletePreview
-    autocmd InsertLeave *.hpp :pclose
-    autocmd InsertLeave *.h :pclose
-    autocmd InsertLeave *.cpp :pclose
+    autocmd InsertLeave *.hpp,*.py :pclose
+    autocmd InsertLeave *.h,*.py :pclose
+    autocmd InsertLeave *.cpp,*.py :pclose
 augroup END
 let g:ycm_extra_conf_vim_data = ['getcwd()']
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
