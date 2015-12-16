@@ -98,6 +98,10 @@ def ParseCMakeDependFile(cwd, dependfile, filename):
             yield df
 
 def FindBuildDir(cwd):
+    dotDir = os.path.join(cwd, '.builddir')
+    if (os.path.exists(dotDir)):
+        with open(dotDir, 'r') as f:
+            return f.readline().strip()
     cmakefiles = os.path.join(cwd, 'CMakeFiles')
     if os.path.exists(cmakefiles):
         return cwd
@@ -115,6 +119,8 @@ def FindBuildDir(cwd):
 
 def CMakeDependFilePath(cwd):
     cmakefiles = FindBuildDir(cwd)
+    if (cmakefiles == None):
+        cmakefiles = ''
     sys.stderr.write("CMakeDependFilePath with cmakefiles = " + cmakefiles + "\n")
     if os.path.isdir(cmakefiles):
         sys.stderr.write("isdir = true\n")
