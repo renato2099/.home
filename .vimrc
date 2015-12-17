@@ -32,6 +32,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'rust-lang/rust.vim'
 Plugin 'racer-rust/vim-racer'
+Plugin 'Raimondi/delimitMate'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -85,14 +86,46 @@ nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 " Resizing
 autocmd VimResized * exe "normal! \<c-w>="
 
+" Folding options for marker
+function! FoldMark()
+    set foldmethod=marker
+    set foldcolumn=3
+endfunction
+
+
 " Latex-Box
+function! LatexFolds()
+    let thisline = getline(v:lnum)
+    if match(thisline, '\\chapter') >= 0
+        return ">1"
+    elseif match(thisline, '\\section') >= 0
+        return ">2"
+    elseif match(thisline, '\\subsection') >= 0
+        return ">3"
+    elseif match(thisline, '\\subsubsection') >= 0
+        return ">4"
+    else
+        return "="
+    endif
+endfunction
+
+function! LatexOptions()
+    setlocal foldmethod=expr
+    setlocal foldcolumn=4
+    setlocal foldexpr=LatexFolds()
+endfunction
+
 let g:LatexBox_latexmk_async = 1
 let g:LatexBox_viewer = "open -a Skim"
 let g:Tex_ViewRule_pdf = 'Skim'
 map <silent> <localleader>ls :silent !/Applications/Skim.app/Contents/SharedSupport/displayline
     \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>" "%:p" <CR>
-autocmd FileType tex setlocal spell spelllang=en_us
-autocmd FileType tex set textwidth=80
+augroup LaTeX
+    autocmd FileType tex setlocal spell spelllang=en_us
+    autocmd FileType tex setlocal textwidth=80
+    autocmd FileType tex inoremap<buffer> " ``''<left><left>
+    autocmd FileType tex call LatexOptions()
+augroup END
 
 " Add header to new files
 autocmd BufNewFile *.cpp so ~/.home/header.txt
@@ -102,22 +135,18 @@ autocmd BufNewFile *.hpp so ~/.home/header.txt
 autocmd BufNewFile *.java so ~/.home/header.txt
 
 " Automatically close brackets
-inoremap ( ()<left>
-inoremap { {}<left>
-inoremap [ []<left>
-inoremap () ()
-inoremap {} {}
-inoremap [] []
-inoremap (<cr> (<cr>)<esc>O
-inoremap {<cr> {<cr>}<esc>O
-inoremap [<cr> [<cr>]<esc>O
-inoremap {<space> {<space> <space>}<left><left>
-inoremap (<space> (<space> <space>)<left><left>
-inoremap [<space> [<space> <space>]<left><left>
-
-augroup TeXClose
-    autocmd FileType tex inoremap " ``''<left><left>
-augroup END
+" inoremap ( ()<left>
+" inoremap { {}<left>
+" inoremap [ []<left>
+" inoremap () ()
+" inoremap {} {}
+" inoremap [] []
+" inoremap (<cr> (<cr>)<esc>O
+" inoremap {<cr> {<cr>}<esc>O
+" inoremap [<cr> [<cr>]<esc>O
+" inoremap {<space> {<space> <space>}<left><left>
+" inoremap (<space> (<space> <space>)<left><left>
+" inoremap [<space> [<space> <space>]<left><left>
 
 " Font
 set guifont=Meslo\ LG\ M\ for\ Powerline:h12
