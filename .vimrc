@@ -163,7 +163,6 @@ function! DelCurrBuffer()
     bprevious
     execute 'bdelete' bufNr 
 endfunction
-nnoremap <leader>g :buffers<CR>:buffer<Space>
 nnoremap <leader>d :call DelCurrBuffer()<CR>
 nnoremap <silent> <tab> :bnext<CR>
 nnoremap <silent> <s-tab> :bprevious<CR>
