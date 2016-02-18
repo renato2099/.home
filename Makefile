@@ -6,6 +6,8 @@ DEST_PATH = $(HOME)/.home
 # files to delete from $HOME
 DOT_FILES = $(HOME)/.latexmkrc $(HOME)/.vimrc $(HOME)/.vim $(HOME)/.clang-format $(HOME)/.tmux.conf
 
+install: clean $(DOT_FILES) help
+	
 clean:
 	rm -f $(DOT_FILES)
 help:
@@ -25,8 +27,4 @@ $(HOME)/.vimrc:
 	ln -s $(DEST_PATH)/.vimrc $(HOME)/.vimrc
 $(HOME)/.vim:
 	ln -s $(DEST_PATH)/.vim $(HOME)/.vim
-
-# local settings file
-$(LOCAL_SETTINGS_FILE):
-	touch $(LOCAL_SETTINGS_FILE)
 
