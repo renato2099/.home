@@ -4,7 +4,7 @@ h1. Installation
 
 Installation is very simple, you just have to clone this repository to your home dir:
 
-@git clone git\@github.com:lucasbraun/.home.git $HOME/.home@
+@git clone git&#64;github.com:lucasbraun/.home.git $HOME/.home@
 
 cd into the newly created directory Clone to necessary submodules:
 
@@ -24,7 +24,7 @@ This will usually work for OS X - for other systems (and may be even OS X) you m
 @cd ~/.vim/bundle/YouCompleteMe@
 @./install.py --clang-completer@
 
-After the installation completed, run :PluginInstall again.
+After the installation completed, run @:PluginInstall@ again.
 
 Additional details for YCM can be found on:
 @https://github.com/Valloric/YouCompleteMe@
