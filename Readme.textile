@@ -4,12 +4,27 @@ h1. Installation
 
 Installation is very simple, you just have to clone this repository to your home dir:
 
-@git clone git://github.com/mpilman/.home.git $HOME/.home@
+@git clone git@github.com:lucasbraun/.home.git $HOME/.home@
+
+cd into the newly created directory Clone to necessary submodules:
+
+@cd $HOME/.home && git submodule update --init
 
 cd into the newly created directory and run make install:
 
 @cd $HOME/.home && make install@
 
-.home will then clone the oh-my-zsh repository (if necessary) and create a symlink in your home dir .zshrc to adjust $PATH as well as set zsh preferences.
+.home will then create symlinks in your home dir to adjust $PATH as well as preferences for different tools.
 
-This will usually work for OS X - for other systems (and may be even OS X) you might want to make sure that YCM is compiled.
+In order to install all, plugins, open vim and enter
+@:PluginInstall
+
+This will usually work for OS X - for other systems (and may be even OS X) you might want to make sure that YCM is compiled. For instance, for Ubuntu, you need to execute the following commands:
+
+@cd ~/.vim/bundle/YouCompleteMe
+@./install.py --clang-completer
+
+After the installation completed, run :PluginInstall again.
+
+Additional details for YCM can be found on:
+@https://github.com/Valloric/YouCompleteMe
