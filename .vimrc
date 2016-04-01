@@ -42,6 +42,7 @@ filetype plugin indent on    " required
 
 set encoding=utf-8
 set t_Co=256
+set number
 set relativenumber
 set nocompatible
 set visualbell
@@ -53,7 +54,6 @@ set smartindent
 set smarttab
 set mouse=a
 set hidden
-set number
 set cinoptions=:0,g0,t0,N-s
 set scrolloff=15
 set nostartofline
@@ -62,6 +62,7 @@ set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 " For tmux
 set t_ut=
 let g:solarized_termcolors=256
+let g:jellybeans_use_term_background_color=0
 set background=light
 colorscheme jellybeans
 
