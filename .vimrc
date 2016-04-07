@@ -36,6 +36,9 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'nanotech/jellybeans.vim'
+Plugin 'Shougo/vimproc.vim.git'
+Plugin 'eagletmt/ghcmod-vim.git'
+Plugin 'Twinside/vim-hoogle'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -210,7 +213,16 @@ nnoremap D d$
 
 " Haskell
 let g:haskellmode_completion_ghc = 0
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+let g:necoghc_enable_detailed_browse = 1
+augroup HaskellGroup
+    autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+    autocmd FileType haskell nnoremap <localleader>l :GhcModLint<CR>
+    autocmd FileType haskell nnoremap <localleader>c :GhcModCheck<CR>
+    autocmd FileType haskell nnoremap <localleader>t :GhcModType<CR>
+    autocmd FileType haskell nnoremap <localleader>n :GhcModTypeClear<CR>
+    autocmd FileType haskell nnoremap <localleader>s :GhcModSigCodegen<CR>
+    autocmd FileType haskell set tags=tags;/,codex.tags;/
+augroup END
 
 " Python special case
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4

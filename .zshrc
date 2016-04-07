@@ -41,7 +41,7 @@ alias -s cpp=vim
 alias -s h=vim
 alias -s hpp=vim
 
-export PATH=/opt/local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/sbin:~/.cabal/bin:$PATH
+export PATH=/opt/local/bin:/usr/local/bin:/usr/local/sbin:/opt/local/sbin:~/.local/bin:$PATH
 export EDITOR=vim
 
 if [[ $HOST == bach* ]]
