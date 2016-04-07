@@ -21,10 +21,20 @@ In order to install all, plugins, open vim and enter
 
 This will usually work for OS X - for other systems (and may be even OS X) you might want to make sure that YCM is compiled. For instance, for Ubuntu, you need to execute the following commands:
 
-@cd ~/.vim/bundle/YouCompleteMe@
+@cd $HOME/.vim/bundle/YouCompleteMe@
 @./install.py --clang-completer@
 
 After the installation completed, run @:PluginInstall@ again.
 
 Additional details for YCM can be found on:
 @https://github.com/Valloric/YouCompleteMe@
+
+If you want to use auto-completion for Haskel, make sure you have ghc-mod install, if not do:
+@stack install ghc-mod@
+
+Also make sure, ghc-mod is on your path. On Ubuntu, for example, this means to add the following lines to your .bashrc if not already there:
+@export PATH=$PATH:$HOME/.local/bin@
+
+To make the Haskel-Plugin work, execute:
+@cd $HOME/.vim/bundle/vimproc/@
+@make@
