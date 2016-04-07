@@ -32,7 +32,7 @@ Additional details for YCM can be found on:
 If you want to use auto-completion for Haskel, make sure you have ghc-mod, codex, hasktags, and hoogle installed, if not do:
 @stack install ghc-mod codex hasktags hoogle@
 
-Also make sure, ghc-mod is on your path. On Ubuntu, for example, this means to add the following lines to your .bashrc if not already there:
+Also make sure, ghc-mod is on your path. On Ubuntu, for example, this means to add the following lines to your .bashrc and .bash_profile if not already there:
 @export PATH=$PATH:$HOME/.local/bin@
 
 To make the Haskel-Plugin work, execute:
