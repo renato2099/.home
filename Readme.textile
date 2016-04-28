@@ -1,7 +1,6 @@
 This is my home dir, settings for zsh, dot files and so on ...
 
-Installation
-============
+.h1 Installation
 
 Installation is very simple, you just have to clone this repository to your home dir:
 
@@ -31,8 +30,7 @@ Additional details for YCM can be found on:
 @https://github.com/Valloric/YouCompleteMe@
 
 
-Auto-Completion for Haskell
-===========================
+.h2 Auto-Completion for Haskell
 
 If you want to use auto-completion for Haskel, make sure you have ghc-mod, codex, hasktags, and hoogle installed, if not do:
 @stack install ghc-mod codex hasktags hoogle@
@@ -54,3 +52,18 @@ For more information about these helper functions go to:
 If you have a cabal project, you can execute
 @codex update@
 This will create a set of tags (codex.tags) that are later used by VIM to not only show auto completion, but even types
+
+.h2 Latex Support
+
+As built now, you can also use VIM for latex files. You can commands like
+@\ll -- for building@
+@zo -- for opening a toggled section@
+@zc -- for closing a toggled section@
+@vipgq -- for auto alignment@
+@z= -- for error correction@
+
+In order to make GVIM work together well with a pdf viewer, install Okular and add the following line to its Editor Options (Custom Text Editor):
+@gvim --servername GVIM --remote +%l %f@
+
+From now on you can use "\ls" to jump from GVIM to Okular and "Shift + Mouse" for vice-versa.
+
