@@ -125,10 +125,15 @@ function! LatexOptions()
 endfunction
 
 let g:LatexBox_latexmk_async = 1
-let g:LatexBox_viewer = "open -a Skim"
-let g:Tex_ViewRule_pdf = 'Skim'
-map <silent> <localleader>ls :silent !/Applications/Skim.app/Contents/SharedSupport/displayline
-    \ <C-R>=line('.')<CR> "<C-R>=LatexBox_GetOutputFile()<CR>" "%:p" <CR>
+let g:LatexBox_viewer = "okular --unique"
+"let g:Tex_ViewRule_pdf = 'okular'
+function! SyncTexForward()
+  let s:syncfile = LatexBox_GetOutputFile()
+  let execstr = "silent !okular --unique ".s:syncfile."\\#src:".line(".").expand("%\:p").' &'
+  exec execstr
+endfunction
+nnoremap <Localleader>ls :call SyncTexForward()<CR>
+
 augroup LaTeX
     autocmd FileType tex setlocal spell spelllang=en_us
     autocmd FileType tex setlocal textwidth=80
@@ -158,7 +163,7 @@ autocmd BufNewFile *.java so ~/.home/header.txt
 " inoremap [<space> [<space> <space>]<left><left>
 
 " Font
-set guifont=Meslo\ LG\ M\ for\ Powerline:h12
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 12
 
 " Rust
 let $RUST_SRC_PATH="/Users/mpilman/Projects/rust/src/"

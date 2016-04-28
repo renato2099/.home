@@ -1,6 +1,7 @@
 This is my home dir, settings for zsh, dot files and so on ...
 
-h1. Installation
+Installation
+============
 
 Installation is very simple, you just have to clone this repository to your home dir:
 
@@ -29,6 +30,10 @@ After the installation completed, run @:PluginInstall@ again.
 Additional details for YCM can be found on:
 @https://github.com/Valloric/YouCompleteMe@
 
+
+Auto-Completion for Haskell
+===========================
+
 If you want to use auto-completion for Haskel, make sure you have ghc-mod, codex, hasktags, and hoogle installed, if not do:
 @stack install ghc-mod codex hasktags hoogle@
 
@@ -38,3 +43,14 @@ Also make sure, ghc-mod is on your path. On Ubuntu, for example, this means to a
 To make the Haskel-Plugin work, execute:
 @cd $HOME/.vim/bundle/vimproc/@
 @make@
+
+To use the Plugin you can run, commands like the following within VIM:
+@:GhcModCheck@
+@:GhcModLint@
+
+For more information about these helper functions go to:
+@https://github.com/eagletmt/ghcmod-vim@
+
+If you have a cabal project, you can execute
+@codex update@
+This will create a set of tags (codex.tags) that are later used by VIM to not only show auto completion, but even types
