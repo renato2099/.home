@@ -69,6 +69,11 @@ let g:jellybeans_use_term_background_color=0
 set background=light
 colorscheme jellybeans
 
+" added by lbraunl to facilicate copying/pasting to/from clipboard
+" like that, you can use normal y and p commands throughout several vim
+" windows
+set clipboard=unnamedplus
+
 let mapleader = ","
 let maplocalleader = "\\"
 
