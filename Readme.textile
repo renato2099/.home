@@ -24,6 +24,11 @@ This will usually work for OS X - for other systems (and may be even OS X) you m
 @cd $HOME/.vim/bundle/YouCompleteMe@
 @./install.py --clang-completer@
 
+Should this fail because the script was unable to find the python libraries, checkout the following post for help:
+@http://stackoverflow.com/questions/37277976/vim-youcomplete-me-unable-to-find-an-appropriate-python-library@
+
+Another problem could be that you do not have installed proper python command. For this, install the package vim-gnome-py2 or a similar one.
+
 After the installation completed, run @:PluginInstall@ again.
 
 Additional details for YCM can be found on:
