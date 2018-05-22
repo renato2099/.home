@@ -1,6 +1,6 @@
 :insert
 /*
- * (C) Copyright 2015 ETH Zurich Systems Group (http://www.systems.ethz.ch/) and others.
+ * (C) Copyright 2018 ETH Zurich Systems Group (http://www.systems.ethz.ch/) and others.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,10 +14,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Contributors:
- *     Markus Pilman <mpilman@inf.ethz.ch>
- *     Simon Loesing <sloesing@inf.ethz.ch>
- *     Thomas Etter <etterth@gmail.com>
- *     Kevin Bocksrocker <kevin.bocksrocker@gmail.com>
- *     Lucas Braun <braunl@inf.ethz.ch>
  */
