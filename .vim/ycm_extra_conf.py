@@ -215,7 +215,7 @@ def SourceLang(filename, database):
 
 def FindClang():
     res = "clang"
-    clangFile = "/home/mpilman/.clang-exec"
+    clangFile = "/home/marenato/.clang-exec"
     if os.path.exists(clangFile):
         with open(clangFile, 'r') as f:
             res = str(f.readline()).strip()
