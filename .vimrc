@@ -62,6 +62,9 @@ set scrolloff=15
 set nostartofline
 set list
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+" for disabling pasting in bracketing mode
+set t_BE=
+
 " For tmux
 set t_ut=
 let g:solarized_termcolors=256
