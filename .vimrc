@@ -15,30 +15,30 @@ Plugin 'godlygeek/csapprox'
 Plugin 'vim-scripts/a.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'vim-airline/vim-airline-themes'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'joonty/vdebug.git'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tfnico/vim-gradle'
+" Plugin 'joonty/vdebug.git'
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'tfnico/vim-gradle'
 Plugin 'dag/vim-fish'
-Plugin 'eagletmt/neco-ghc.git'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'jez/vim-superman'
-Plugin 'kana/vim-operator-user'
+" Plugin 'eagletmt/neco-ghc.git'
+" Plugin 'hail2u/vim-css3-syntax'
+" Plugin 'jez/vim-superman'
+" Plugin 'kana/vim-operator-user'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'tpope/vim-surround'
 Plugin 'junegunn/vim-easy-align'
-Plugin 'rust-lang/rust.vim'
+" Plugin 'rust-lang/rust.vim'
 " Plugin 'racer-rust/vim-racer'
 Plugin 'Raimondi/delimitMate'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'nanotech/jellybeans.vim'
-Plugin 'Shougo/vimproc.vim.git'
-Plugin 'eagletmt/ghcmod-vim.git'
-Plugin 'Twinside/vim-hoogle'
+" Plugin 'Shougo/vimproc.vim.git'
+" Plugin 'eagletmt/ghcmod-vim.git'
+" Plugin 'Twinside/vim-hoogle'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -147,11 +147,11 @@ augroup LaTeX
 augroup END
 
 " Add header to new files
-autocmd BufNewFile *.cpp so ~/.home/header.txt
-autocmd BufNewFile *.c so ~/.home/header.txt
-autocmd BufNewFile *.h so ~/.home/header.txt
-autocmd BufNewFile *.hpp so ~/.home/header.txt
-autocmd BufNewFile *.java so ~/.home/header.txt
+" autocmd BufNewFile *.cpp so ~/.home/header.txt
+" autocmd BufNewFile *.c so ~/.home/header.txt
+" autocmd BufNewFile *.h so ~/.home/header.txt
+" autocmd BufNewFile *.hpp so ~/.home/header.txt
+" autocmd BufNewFile *.java so ~/.home/header.txt
 
 " Automatically close brackets
 " inoremap ( ()<left>
@@ -171,7 +171,7 @@ autocmd BufNewFile *.java so ~/.home/header.txt
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 12
 
 " Rust
-let $RUST_SRC_PATH="/Users/mpilman/Projects/rust/src/"
+" let $RUST_SRC_PATH="/Users/mpilman/Projects/rust/src/"
 
 " status line
 set laststatus=2
@@ -253,7 +253,7 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 " Neco-ghc
-setlocal omnifunc=necoghc#omnifunc
+" setlocal omnifunc=necoghc#omnifunc
 " YCM
 nnoremap <leader>g :YcmCompleter GoTo<CR>
 nnoremap <leader>D :YcmDiag<CR>
@@ -270,22 +270,22 @@ let g:ycm_semantic_triggers = {'haskell' : ['.']}
 let g:ycm_filetype_blacklist = {'tex' : 1}
 "
 " Semantic Highlight
-nnoremap <leader>s :SemanticHighlight<CR>
+" nnoremap <leader>s :SemanticHighlight<CR>
 
 " Clighter
-let g:clighter_libclang_file = '/Applications/Xcode.app//Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
-let g:clighter_highlight_groups = ["clighterMacroInstantiation","clighterTypeRef","clighterStructDecl","clighterClassDecl","clighterEnumDecl","clighterEnumConstantDecl","clighterDeclRefExprEnum","clighterCursorDefRef","clighterFunctionDecl","clighterDeclRefExprCall","clighterMemberRefExpr","clighterNamespace"]
+" let g:clighter_libclang_file = '/Applications/Xcode.app//Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
+" let g:clighter_highlight_groups = ["clighterMacroInstantiation","clighterTypeRef","clighterStructDecl","clighterClassDecl","clighterEnumDecl","clighterEnumConstantDecl","clighterDeclRefExprEnum","clighterCursorDefRef","clighterFunctionDecl","clighterDeclRefExprCall","clighterMemberRefExpr","clighterNamespace"]
 
 " Configure make to work with cmake
-function! s:currentDirName()
-    let l:cwd = getcwd()
-    return split(l:cwd, "/")[-1]
-endfunction
-function! s:createNinjaCmd()
-    let l:dirname = s:currentDirName()
-    return "setlocal makeprg=ninja\\ -C\\ ../builddirs/" . l:dirname
-endfunction
-augroup cppmake
-    autocmd!
-    autocmd FileType cpp execute s:createNinjaCmd()
-augroup END
+" function! s:currentDirName()
+"     let l:cwd = getcwd()
+"     return split(l:cwd, "/")[-1]
+" endfunction
+" function! s:createNinjaCmd()
+"     let l:dirname = s:currentDirName()
+"     return "setlocal makeprg=ninja\\ -C\\ ../builddirs/" . l:dirname
+" endfunction
+" augroup cppmake
+"     autocmd!
+"     autocmd FileType cpp execute s:createNinjaCmd()
+" augroup END
