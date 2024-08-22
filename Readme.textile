@@ -4,7 +4,7 @@ h1. Installation
 
 Installation is very simple, you just have to clone this repository to your home dir:
 
-@git clone git://github.com/lucasbraun/.home.git $HOME/.home@
+@git clone git://github.com/renato2099/.home.git $HOME/.home@
 
 cd into the newly created directory Clone to necessary submodules:
 
